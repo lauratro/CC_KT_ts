@@ -1,7 +1,7 @@
-import React, { useState,useContext } from "react";
+import React, { useState } from "react";
 import { CREATE_AUTH_MUTATION } from "../../Graphql/Mutation";
 import { useMutation } from "@apollo/client";
-import VariableContext from '../../context/VariableContext'
+
 import {useGlobalContext} from "../../context/VariableContext"
 
 import "./Login.css";
