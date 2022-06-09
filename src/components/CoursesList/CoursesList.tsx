@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_LIST } from "./../../Graphql/Query";
 import Loading from "./../Loading/Loading";
+import {useGlobalContext} from "../../context/VariableContext"
 
 interface Course {
   icon: { url: string };
@@ -10,9 +11,11 @@ interface Course {
 
 const CoursesList: React.FC = () => {
   const { loading, error, data } = useQuery(GET_LIST);
-
+  const {isLoggedIn } = useGlobalContext()
   return (
     <div>
+      {isLoggedIn &&
+      <div>
       <h2>Kursen</h2>
       {loading && <Loading />}
       {error !== undefined && <p>{error.message}</p>}
@@ -25,6 +28,8 @@ const CoursesList: React.FC = () => {
             </div>
           );
         })}
+    </div>
+}
     </div>
   );
 };
