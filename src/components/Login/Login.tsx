@@ -2,6 +2,12 @@ import React from 'react'
 import { CREATE_AUTH_MUTATION } from '../../Graphql/Mutation';
 import { useMutation } from '@apollo/client';
 
+
+interface FormData {
+    email: string;
+    password: string;
+    
+  }
 const Login:React.FC =()=> {
     const getData=(data)=>{
         localStorage.setItem('token', data.Auth.login.token );
