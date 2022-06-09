@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { CREATE_AUTH_MUTATION } from "../../Graphql/Mutation";
 import { useMutation } from "@apollo/client";
+import VariableContext from '../../context/VariableContext'
+import {useGlobalContext} from "../../context/VariableContext"
 
 import "./Login.css";
 
@@ -14,15 +16,17 @@ const Login: React.FC = () => {
     email: "karl.kroeber@thekey.technology",
     password: "testtest",
   });
-
-  const [login, { error }] = useMutation(CREATE_AUTH_MUTATION);
+  const isLogged = localStorage.getItem("isLogged")
+  console.log(isLogged)
+  const {isLoggedIn, login } = useGlobalContext()
+  const [loginUser, { error }] = useMutation(CREATE_AUTH_MUTATION);
 
   const handleCLick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.email || !input.password) {
       alert("Enter email and password!");
     } else {
-      login({
+      loginUser({
         variables: {
           email: input.email,
           password: input.password,
@@ -31,6 +35,8 @@ const Login: React.FC = () => {
         .then(({ data }) => {
           localStorage.setItem("token", data.Auth.login.token);
           localStorage.setItem("userId", data.Auth.login.userId);
+          localStorage.setItem("isLogged", "login")
+          login()
         })
         .catch((error) => {
           console.log(error);
@@ -49,7 +55,9 @@ const Login: React.FC = () => {
         {error && <p>Submission error! ${error.message}</p>}
       </div>
       <div>
+        {!isLoggedIn &&
         <form className="formContainer" onSubmit={handleCLick}>
+        <h2 className="formTitle">Login</h2>
           <div className="inputField">
             <label className="labelStyle" htmlFor="username">
               Username
@@ -64,10 +72,11 @@ const Login: React.FC = () => {
           </div>
           <div className="buttonCont">
             <button className="submitButton" type="submit">
-              Log in
+              Login
             </button>
           </div>
         </form>
+}
       </div>
     </div>
   );
