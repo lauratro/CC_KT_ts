@@ -9,8 +9,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
  headers: {
 
-   "X-Auth-Token":localStorage.getItem('token') ||"",
-   "X-Auth-Account-Id":localStorage.getItem("userId") || "" 
+    "X-Auth-Token":localStorage.getItem('token') ||"6718a44c-8813-460f-a8e1-70a0942582a6",
+   "X-Auth-Account-Id":localStorage.getItem("userId") || "VXNlcjpVc2VyOmJlZWY5NWEzLTYxNjgtNDIzNy04NDc0LTE0YWIyZjk1ZTI5Nw=="  
 } ,
 connectToDevTools: true
 });
