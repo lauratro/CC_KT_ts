@@ -2,17 +2,12 @@ import React, { useState } from "react";
 import { CREATE_AUTH_MUTATION } from "../../Graphql/Mutation";
 import { useMutation } from "@apollo/client";
 
-
 import "./Login.css";
-
 
 interface FormData {
   email: string;
   password: string;
-
-
 }
-
 
 const Login: React.FC = () => {
   const [input, setInput] = useState<FormData>({
@@ -20,27 +15,22 @@ const Login: React.FC = () => {
     password: "testtest",
   });
 
-
-  const [login, {  error }] = useMutation(CREATE_AUTH_MUTATION);
+  const [login, { error }] = useMutation(CREATE_AUTH_MUTATION);
 
   const handleCLick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.email || !input.password) {
       alert("Enter email and password!");
     } else {
-      
       login({
-        variables:{ 
+        variables: {
           email: input.email,
           password: input.password,
         },
       })
-        .then(({ data}) => {
-   
-          localStorage.setItem('token', data.Auth.login.token  );
-          localStorage.setItem('userId', data.Auth.login.userId );
-     
-        
+        .then(({ data }) => {
+          localStorage.setItem("token", data.Auth.login.token);
+          localStorage.setItem("userId", data.Auth.login.userId);
         })
         .catch((error) => {
           console.log(error);
@@ -56,9 +46,7 @@ const Login: React.FC = () => {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-      
         {error && <p>Submission error! ${error.message}</p>}
-    
       </div>
       <div>
         <form className="formContainer" onSubmit={handleCLick}>
@@ -66,11 +54,7 @@ const Login: React.FC = () => {
             <label className="labelStyle" htmlFor="username">
               Username
             </label>
-            <input
-              type="text"
-              defaultValue={"xxxxxx"}
-
-            />
+            <input type="text" defaultValue={"xxxxxx"} />
           </div>
           <div className="inputField">
             <label className="labelStyle" htmlFor="passwort">
