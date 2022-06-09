@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CREATE_AUTH_MUTATION } from "../../Graphql/Mutation";
 import { useMutation } from "@apollo/client";
 
+
 import "./Login.css";
 
 
@@ -20,7 +21,7 @@ const Login: React.FC = () => {
   });
 
 
-  const [login, { error }] = useMutation(CREATE_AUTH_MUTATION);
+  const [login, {  error }] = useMutation(CREATE_AUTH_MUTATION);
 
   const handleCLick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,7 +56,9 @@ const Login: React.FC = () => {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
+      
         {error && <p>Submission error! ${error.message}</p>}
+    
       </div>
       <div>
         <form className="formContainer" onSubmit={handleCLick}>
