@@ -7,11 +7,11 @@ import { ApolloClient, InMemoryCache, ApolloProvider,gql } from "@apollo/client"
 const client = new ApolloClient({
   uri: 'https://staging.api.wissenwirkt.com/api/graphql',
   cache: new InMemoryCache(),
-  headers: {
-   
+ headers: {
+    
    "X-Auth-Token":localStorage.getItem('token') ||"",
    "X-Auth-Account-Id":localStorage.getItem("userId") || ""
-}
+} 
    
 });
 
