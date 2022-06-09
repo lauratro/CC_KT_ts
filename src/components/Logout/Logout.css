@@ -1,0 +1,10 @@
+.logoutButton{
+    margin:10px 20px;
+    border-radius: 10px;
+    background-color: azure;
+    padding: 10px;
+}
+.logoutButton:hover{
+    background-color: 	rgb(60,179,113);
+    color:white
+}
