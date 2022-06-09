@@ -4,9 +4,11 @@ import Logout from "./../Logout/Logout"
 
 const Header:React.FC=()=> {
   return (
-     <div className="headerCont">
+     <div >
+       <div  className='headerCont'>
     <div className='companyName'>INFECTOPHARM</div>
     <Logout />
+</div>
 </div>
   )
 }
