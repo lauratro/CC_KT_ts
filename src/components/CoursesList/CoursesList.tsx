@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 import { GET_LIST } from "./../../Graphql/Query";
 import Loading from "./../Loading/Loading";
 import {useGlobalContext} from "../../context/VariableContext"
-
+import "./CoursesList.css"
 interface Course {
   icon: { url: string };
   title: "string";
@@ -15,8 +15,8 @@ const CoursesList: React.FC = () => {
   return (
     <div>
       {isLoggedIn &&
-      <div>
-      <h2>Kursen</h2>
+      <div className="container">
+      <h2 className="coursesTitle">Kursen</h2>
       {loading && <Loading />}
       {error !== undefined && <p>{error.message}</p>}
       {data !== undefined &&
