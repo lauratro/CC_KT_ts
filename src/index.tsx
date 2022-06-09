@@ -8,11 +8,11 @@ const client = new ApolloClient({
   uri: 'https://staging.api.wissenwirkt.com/api/graphql',
   cache: new InMemoryCache(),
  headers: {
-    
+
    "X-Auth-Token":localStorage.getItem('token') ||"",
-   "X-Auth-Account-Id":localStorage.getItem("userId") || ""
-} 
-   
+   "X-Auth-Account-Id":localStorage.getItem("userId") || "" 
+} ,
+connectToDevTools: true
 });
 
 const root = ReactDOM.createRoot(
