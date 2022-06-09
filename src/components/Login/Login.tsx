@@ -16,8 +16,7 @@ const Login: React.FC = () => {
     email: "karl.kroeber@thekey.technology",
     password: "testtest",
   });
-  const isLogged = localStorage.getItem("isLogged")
-  console.log(isLogged)
+ 
   const {isLoggedIn, login } = useGlobalContext()
   const [loginUser, { error }] = useMutation(CREATE_AUTH_MUTATION);
 
@@ -35,7 +34,7 @@ const Login: React.FC = () => {
         .then(({ data }) => {
           localStorage.setItem("token", data.Auth.login.token);
           localStorage.setItem("userId", data.Auth.login.userId);
-          localStorage.setItem("isLogged", "login")
+          
           login()
         })
         .catch((error) => {
