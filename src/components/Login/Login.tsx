@@ -4,21 +4,11 @@ import { useMutation } from "@apollo/client";
 
 import "./Login.css";
 
-interface AuthResult {
-    
-        
-          login: {
-            token: string,
-            userId: string
-          }
-        
-      
-  }
 
 interface FormData {
   email: string;
   password: string;
- Auth?:AuthResult
+
 
 }
 
@@ -30,7 +20,7 @@ const Login: React.FC = () => {
   });
 
 
-  const [createAuth, { error }] = useMutation<FormData>(CREATE_AUTH_MUTATION);
+  const [login, { error }] = useMutation(CREATE_AUTH_MUTATION);
 
   const handleCLick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,17 +28,16 @@ const Login: React.FC = () => {
       alert("Enter email and password!");
     } else {
       
-      createAuth({
+      login({
         variables:{ 
           email: input.email,
           password: input.password,
         },
       })
         .then(({ data}) => {
-          if (data?.Auth?.login !== undefined && data.Auth.login !== null) {
-            localStorage.setItem('token', data?.Auth?.login.token  );
-            localStorage.setItem('userId', data?.Auth?.login.userId );
-          } 
+   
+          localStorage.setItem('token', data.Auth.login.token  );
+          localStorage.setItem('userId', data.Auth.login.userId );
      
         
         })
@@ -76,14 +65,15 @@ const Login: React.FC = () => {
             </label>
             <input
               type="text"
-              defaultValue={"karl.kroeber@thekey.technology"}
+              defaultValue={"xxxxxx"}
+
             />
           </div>
           <div className="inputField">
             <label className="labelStyle" htmlFor="passwort">
               Passwort
             </label>
-            <input type="text" defaultValue={"testtest"} />
+            <input type="text" defaultValue={"xxxxx"} />
           </div>
           <div className="buttonCont">
             <button className="submitButton" type="submit">
