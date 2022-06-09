@@ -19,7 +19,7 @@ const CoursesList:React.FC = ()=> {
         {loading && <p>loading</p>}
     {error !== undefined && <p>{error.message}</p>}
     {data !== undefined &&
-      courses.map(course => {
+      data.map((course:Course) => {
         return (
        <div>
          <img alt="icon" src={course.icon.url} />
