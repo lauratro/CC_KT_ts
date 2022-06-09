@@ -16,7 +16,7 @@ export const VariableContext = React.createContext<Variables>({isLoggedIn:false,
     });
 
 const VariableProvider = ({ children }:Props) => {
-  const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 const logout =()=>{
     setIsLoggedIn(false)
 }
