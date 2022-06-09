@@ -3,9 +3,12 @@
     font-family: 'Barlow Condensed', sans-serif;
     margin:10px;
     font-size: 30px;
-    text-align: left;
+  
 }
 .headerCont{
     padding: 10px 10px 10px 20px;
     height:70px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
 }
