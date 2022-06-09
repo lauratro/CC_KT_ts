@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Logout.css"
 
 import {useGlobalContext} from "../../context/VariableContext"
 
@@ -16,7 +17,7 @@ const Logout:React.FC=()=> {
   return (
     <div>
 { isLoggedIn&&
-  <button onClick={logOut}>Logout</button>
+  <button className='logoutButton' onClick={logOut}>Logout</button>
 }
       
     </div>
