@@ -1,0 +1,32 @@
+.formContainer{
+    padding:10px;
+    margin:10px;
+    width:400px;
+    height:200px;
+    margin:0 auto;
+    margin-top: 50px;
+    background-color: azure;
+    box-shadow: 10px 10px 14px -3px rgba(54,54,54,1);
+}
+.inputField{
+    margin-top: 10px;
+    margin-bottom:  10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    
+}
+.labelStyle{
+    margin-bottom: 4px;
+}
+.buttonCont{
+    display: flex;
+justify-content: center;
+padding:20px
+}
+.submitButton{
+    width: 100px;
+    margin:0 auto;
+    
+}
