@@ -3,13 +3,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApolloClient, InMemoryCache, ApolloProvider,gql } from "@apollo/client";
+const client = new ApolloClient({
+  uri: 'https://staging.api.wissenwirkt.com/api/graphql',
+  cache: new InMemoryCache(),
+  headers: {
+   
+   "X-Auth-Token":localStorage.getItem('token') ||"",
+   "X-Auth-Account-Id":localStorage.getItem("userId") || ""
+}
+   
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+     <ApolloProvider client={client}>
     <App />
+    </ApolloProvider>
   </React.StrictMode>
 );
 
