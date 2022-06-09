@@ -1,5 +1,5 @@
-//import * as React from 'react';
-import React, {useState, useContext, createContext} from "react"
+
+import React, {useState, useContext} from "react"
 
 export interface Variables {
    isLoggedIn:boolean,
