@@ -33,7 +33,7 @@ const Login: React.FC = () => {
       })
         .then(({ data }) => {
           localStorage.setItem("token", data.Auth.login.token);
-          localStorage.setItem("userId", data.Auth.login.userId);
+          localStorage.setItem("userId", data.Auth.login.accounts[0].id);
           
           login()
         })
