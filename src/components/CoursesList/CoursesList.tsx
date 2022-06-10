@@ -16,7 +16,7 @@ const CoursesList: React.FC = () => {
     <div>
       {isLoggedIn &&
       <div className="container">
-      <h2 className="coursesTitle">Kursen</h2>
+      <h2 className="coursesTitle">Kurse</h2>
       {loading && <Loading />}
       {error !== undefined && <p>{error.message}</p>}
       {data !== undefined &&
