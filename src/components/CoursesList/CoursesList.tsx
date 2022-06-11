@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { GET_LIST } from "./../../Graphql/Query";
 import Loading from "./../Loading/Loading";
 import {useGlobalContext} from "../../context/VariableContext"
+import SearchBar from "../SearchBar/SearchBar";
 import "./CoursesList.css"
 interface Course {
 node:{
@@ -31,7 +32,7 @@ const CoursesList: React.FC = () => {
      
       <div className="container">
       <h2 className="coursesTitle">Kurse</h2>
-      <input type="text" value={searchedText} onChange={(e)=>setSearchedText(e.target.value)}/>
+      <SearchBar/>
       {loading && <Loading />}
       {error !== undefined && <p>{error.message}</p>}
       <div className="coursesContainer">
