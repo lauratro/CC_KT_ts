@@ -4,7 +4,6 @@ import { GET_LIST } from "./../../Graphql/Query";
 import Loading from "./../Loading/Loading";
 import { useGlobalContext } from "../../context/VariableContext";
 import SearchBar from "../SearchBar/SearchBar";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SingleCourse from "../SingleCourse/SingleCourse";
 import "./CoursesList.css";
 interface Course {
