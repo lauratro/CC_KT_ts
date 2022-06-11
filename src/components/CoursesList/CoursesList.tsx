@@ -5,6 +5,7 @@ import Loading from "./../Loading/Loading";
 import {useGlobalContext} from "../../context/VariableContext"
 import SearchBar from "../SearchBar/SearchBar";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import SingleCourse from "../SingleCourse/SingleCourse";
 import "./CoursesList.css"
 interface Course {
 node:{
@@ -39,14 +40,11 @@ const CoursesList: React.FC = () => {
       <div className="coursesContainer">
             {data !== undefined &&
         data.Learn.LearnOpportunities.edges.map((course: Course) => {
-          return (
-            <div className="singleCourseContainer" key={course.node.title}>
-              <img style={{width:50, height:50}}  alt="icon" src={course.node.icon.url} />
-              <p>{course.node.title}</p>
-            </div>
-          );
-        })}   
+          return (<SingleCourse course={course} />)})
+   
+          
         
+      }
         </div>
         
     </div>
