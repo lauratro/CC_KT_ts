@@ -17,11 +17,11 @@ interface CoursesList{
 
 const CoursesList: React.FC = () => {
 
-const [searchedText,setSearchedText]= useState<string>("")
-  const { loading, error, data } = useQuery(GET_LIST);
-  const {isLoggedIn } = useGlobalContext()
 
- console.log(searchedText)
+  const { loading, error, data } = useQuery(GET_LIST);
+  const {setSearchedText,searchedText } = useGlobalContext()
+
+
  const filtered:Course[] = searchedText ? data.Learn.LearnOpportunities.edges.filter((course:Course)=>{
  return course.node.title.toLowerCase().includes(searchedText.toLowerCase())
  }):data.Learn.LearnOpportunities.edges
@@ -34,15 +34,17 @@ const [searchedText,setSearchedText]= useState<string>("")
       <input type="text" value={searchedText} onChange={(e)=>setSearchedText(e.target.value)}/>
       {loading && <Loading />}
       {error !== undefined && <p>{error.message}</p>}
+      <div className="coursesContainer">
             {data !== undefined &&
         filtered.map((course: Course) => {
           return (
-            <div key={course.node.title}>
-              <img  alt="icon" src={course.node.icon.url} />
+            <div className="singleCourseContainer" key={course.node.title}>
+              <img style={{width:50, height:50}}  alt="icon" src={course.node.icon.url} />
               <p>{course.node.title}</p>
             </div>
           );
         })}   
+        </div>
     </div>
 
     </div>
