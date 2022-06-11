@@ -13,8 +13,7 @@ const client = new ApolloClient({
   },
   connectToDevTools: true,
 });
-console.log(localStorage.getItem("token"))
-console.log(localStorage.getItem("userId"))
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
