@@ -11,20 +11,23 @@ node:{
   title: "string";
 }
 }
-interface CoursesList{
- edges:Course[]
+
+interface VariablesQuery{
+  first:number,
+  query:string
+
 }
 
 
 const CoursesList: React.FC = () => {
-
-
-  const { loading, error, data } = useQuery(GET_LIST);
   const {setSearchedText,searchedText } = useGlobalContext()
+
+  const { loading, error, data } = useQuery(GET_LIST,{variables: {first:20, query:searchedText }});
+
   let filtered:Course[]=[]
-if(data){ filtered= searchedText ? data.Learn.LearnOpportunities.edges.filter((course:Course)=>{
+/* if(data){ filtered= searchedText ? data.Learn.LearnOpportunities.edges.filter((course:Course)=>{
   return course.node.title.toLowerCase().includes(searchedText.toLowerCase())
-  }):data.Learn.LearnOpportunities.edges}
+  }):data.Learn.LearnOpportunities.edges} */
 
 
   return (
@@ -37,7 +40,7 @@ if(data){ filtered= searchedText ? data.Learn.LearnOpportunities.edges.filter((c
       {error !== undefined && <p>{error.message}</p>}
       <div className="coursesContainer">
             {data !== undefined &&
-        filtered.map((course: Course) => {
+        data.Learn.LearnOpportunities.edges.map((course: Course) => {
           return (
             <div className="singleCourseContainer" key={course.node.title}>
               <img style={{width:50, height:50}}  alt="icon" src={course.node.icon.url} />
