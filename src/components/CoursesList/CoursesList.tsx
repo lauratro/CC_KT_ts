@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_LIST } from "./../../Graphql/Query";
 import Loading from "./../Loading/Loading";
@@ -12,22 +12,14 @@ node:{
 }
 }
 
-interface VariablesQuery{
-  first:number,
-  query:string
-
-}
 
 
 const CoursesList: React.FC = () => {
-  const {setSearchedText,searchedText } = useGlobalContext()
+  const {searchedText } = useGlobalContext()
 
   const { loading, error, data } = useQuery(GET_LIST,{variables: {first:20, query:searchedText }});
 
-  let filtered:Course[]=[]
-/* if(data){ filtered= searchedText ? data.Learn.LearnOpportunities.edges.filter((course:Course)=>{
-  return course.node.title.toLowerCase().includes(searchedText.toLowerCase())
-  }):data.Learn.LearnOpportunities.edges} */
+
 
 
   return (
