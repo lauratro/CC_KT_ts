@@ -9,7 +9,7 @@ interface Course {
     }
 const SingleCourse: React.FC<Course> =({course})=> {
   return (
-    <div>   <div className="singleCourseContainer" key={course.node.title}>
+    <div>   <div className="singleCourseContainer" >
     <img style={{width:50, height:50}}  alt="icon" src={course.node.icon.url} />
     <p>{course.node.title}</p>
   </div></div>
