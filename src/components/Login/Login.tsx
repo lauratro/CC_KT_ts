@@ -37,7 +37,7 @@ const navigate = useNavigate()
         .then(({ data }) => {
           localStorage.setItem("token", data.Auth.login.token);
           localStorage.setItem("userId", data.Auth.login.accounts[0].id);
-          
+
           login()
           navigate("/Courses")
         })
@@ -65,13 +65,13 @@ const navigate = useNavigate()
             <label className="labelStyle" htmlFor="username">
               Username
             </label>
-            <input type="text" defaultValue={"xxxxxx"} />
+            <input type="text" placeholder="xxxxxx"/>
           </div>
           <div className="inputField">
             <label className="labelStyle" htmlFor="passwort">
               Passwort
             </label>
-            <input type="text" defaultValue={"xxxxx"} />
+            <input type="text"placeholder="xxxxxx" />
           </div>
           <div className="buttonCont">
             <button className="submitButton" type="submit">

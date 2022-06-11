@@ -5,7 +5,7 @@ import {useGlobalContext} from "../../context/VariableContext"
 import {
   useNavigate
 } from "react-router-dom";
-import Login from '../Login/Login';
+
 
 const Logout:React.FC=()=> {
    
@@ -15,18 +15,23 @@ const token = localStorage.getItem("token")
 useEffect(()=>{
   if(token !== ""){
     login()
+  }else{
+    logout()
   }
 },[token])
 
     const logOut =()=>{
        logout()
-       localStorage.clear()
        navigate("/")
+     localStorage.setItem("token", "")
+     localStorage.setItem("userId", "")
+      
 
     }
+
   return (
     <div>
-{ isLoggedIn&&
+{ isLoggedIn &&
   <button className='logoutButton' onClick={logOut}>Logout</button>
 }
       
