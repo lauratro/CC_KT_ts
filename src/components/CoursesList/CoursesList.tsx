@@ -21,11 +21,11 @@ const CoursesList: React.FC = () => {
 
   const { loading, error, data } = useQuery(GET_LIST);
   const {setSearchedText,searchedText } = useGlobalContext()
+  let filtered:Course[]=[]
+if(data){ filtered= searchedText ? data.Learn.LearnOpportunities.edges.filter((course:Course)=>{
+  return course.node.title.toLowerCase().includes(searchedText.toLowerCase())
+  }):data.Learn.LearnOpportunities.edges}
 
-
- const filtered:Course[] = searchedText ? data.Learn.LearnOpportunities.edges.filter((course:Course)=>{
- return course.node.title.toLowerCase().includes(searchedText.toLowerCase())
- }):data.Learn.LearnOpportunities.edges
 
   return (
     <div>
