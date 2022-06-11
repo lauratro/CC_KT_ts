@@ -8,8 +8,8 @@ const client = new ApolloClient({
   uri: "https://staging.api.wissenwirkt.com/api/graphql",
   cache: new InMemoryCache(),
   headers: {
-    "X-Auth-Token": localStorage.getItem("token")||"",
-    "X-Auth-Account-Id": localStorage.getItem("userId")||""
+    "X-Auth-Token": localStorage.getItem("token")||"17af7d7a-a747-472a-b9bb-1a8f4bd29508",
+    "X-Auth-Account-Id": localStorage.getItem("userId")||"QWNjb3VudDppbmZlY3RvcGhhcm0="
   },
   connectToDevTools: true,
 });
