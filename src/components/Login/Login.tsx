@@ -3,6 +3,9 @@ import { CREATE_AUTH_MUTATION } from "../../Graphql/Mutation";
 import { useMutation } from "@apollo/client";
 
 import {useGlobalContext} from "../../context/VariableContext"
+import {
+  useNavigate
+} from "react-router-dom";
 
 import "./Login.css";
 
@@ -19,7 +22,7 @@ const Login: React.FC = () => {
  
   const {isLoggedIn, login } = useGlobalContext()
   const [loginUser, { error }] = useMutation(CREATE_AUTH_MUTATION);
-
+const navigate = useNavigate()
   const handleCLick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.email || !input.password) {
@@ -36,6 +39,7 @@ const Login: React.FC = () => {
           localStorage.setItem("userId", data.Auth.login.accounts[0].id);
           
           login()
+          navigate("/Courses")
         })
         .catch((error) => {
           console.log(error);
