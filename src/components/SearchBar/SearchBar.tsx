@@ -6,7 +6,7 @@ import {AiOutlineSearch} from "react-icons/ai"
 const SearchBar:React.FC=()=> {
     const {searchedText,setSearchedText } = useGlobalContext()
   return (
-    <div> <div>
+    <div> <div className='searchBarContainer' >
         <AiOutlineSearch />
         <input className="searchBarStyle" type="text" value={searchedText} placeholder="Kurs suchen" onChange={(e)=>setSearchedText(e.target.value)}/></div></div>
   )
