@@ -3,7 +3,7 @@ import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
 import CoursesList from "./components/CoursesList/CoursesList";
 import VariableProvider from './context/VariableContext'
-import { BrowserRouter as Router, Routes, Route,Link } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import "./App.css";
 
 function App() {
