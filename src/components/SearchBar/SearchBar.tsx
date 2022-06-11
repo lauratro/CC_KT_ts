@@ -1,8 +1,14 @@
 import React from 'react'
 import {useGlobalContext} from "../../context/VariableContext"
-export default function SearchBar() {
+import "./SearchBar.css"
+import {AiOutlineSearch} from "react-icons/ai"
+
+const SearchBar:React.FC=()=> {
     const {searchedText,setSearchedText } = useGlobalContext()
   return (
-    <div> <input type="text" value={searchedText} onChange={(e)=>setSearchedText(e.target.value)}/></div>
+    <div> <div>
+        <AiOutlineSearch />
+        <input className="searchBarStyle" type="text" value={searchedText} placeholder="Kurs suchen" onChange={(e)=>setSearchedText(e.target.value)}/></div></div>
   )
 }
+export default SearchBar;
