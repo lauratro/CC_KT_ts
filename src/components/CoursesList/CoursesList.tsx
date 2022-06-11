@@ -4,6 +4,7 @@ import { GET_LIST } from "./../../Graphql/Query";
 import Loading from "./../Loading/Loading";
 import {useGlobalContext} from "../../context/VariableContext"
 import SearchBar from "../SearchBar/SearchBar";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import "./CoursesList.css"
 interface Course {
 node:{
@@ -15,7 +16,7 @@ node:{
 
 
 const CoursesList: React.FC = () => {
-  const {searchedText } = useGlobalContext()
+  const {searchedText,isLoggedIn } = useGlobalContext()
 
   const { loading, error, data } = useQuery(GET_LIST,{variables: {first:20, query:searchedText }});
 
@@ -27,9 +28,14 @@ const CoursesList: React.FC = () => {
      
       <div className="container">
       <h2 className="coursesTitle">Kurse</h2>
+
+      
+ 
+      {error !== undefined && <p>{error.message}</p>}
+   
+      
       <SearchBar/>
       {loading && <Loading />}
-      {error !== undefined && <p>{error.message}</p>}
       <div className="coursesContainer">
             {data !== undefined &&
         data.Learn.LearnOpportunities.edges.map((course: Course) => {
@@ -40,7 +46,9 @@ const CoursesList: React.FC = () => {
             </div>
           );
         })}   
+        
         </div>
+        
     </div>
 
     </div>
